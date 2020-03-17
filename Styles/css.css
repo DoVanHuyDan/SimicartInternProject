@@ -1,0 +1,138 @@
+    @font-face {
+        font-family: Open_Sans;
+        src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    body {
+        width: 1280px;
+        height: 4965px;
+        border: 1px solid black;
+        padding: 0;
+        margin: 0 auto;
+    }
+    
+    header {
+        width: inherit;
+        height: 257px;
+        padding: 0;
+        margin-left: -15px;
+        margin-right: -15px;
+        position: relative;
+    }
+    /* Rectangle */
+    
+    #rectangle {
+        width: inherit;
+        height: 35px;
+        background-color: #000;
+        margin-left: 15px;
+        margin-bottom: 0;
+        color: #fff;
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+    
+    #rectangle1 {
+        width: 1170px;
+        height: 55px;
+        background-color: #FF5B8F;
+        margin: 0 auto;
+        margin-top: 0;
+        padding-top: 9.5px;
+    }
+    
+    #rectangle_left a {
+        color: white;
+        display: inline;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Open_Sans;
+        font-size: 12px;
+    }
+    
+    #rectangle img {
+        margin-right: 8px;
+    }
+    
+    #rectangle_right a {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-family: Open_Sans;
+        color: white;
+        text-decoration: none;
+    }
+    /* Rectangle1 */
+    /*lam sao de cho cai rectangel 1 nay vao chinh giua dc a , e da thu nhg k dc */
+    
+    #rectangle1 {
+        position: absolute;
+        left: 55px;
+        right: 55px;
+        padding: 15px 20px;
+    }
+    
+    #rectangle1 p {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Open_Sans;
+        font-size: 18px;
+        display: inline;
+    }
+    
+    #rectangle1 a {
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Open_Sans;
+        font-size: 18px;
+        display: inline;
+        margin-left: 250px;
+    }
+    /* #rectangle1 div {
+        border: 1px solid white;
+    } */
+    /*logo + search*/
+    
+    #logo_search {
+        border: 1px solid black;
+        width: 1280px;
+        height: 79px;
+        position: absolute;
+        top: 111px;
+        margin: 0 15px;
+    }
+    
+    #logo_search input {
+        width: 396px;
+        height: 41px;
+        margin-top: 19px;
+    }
+    
+    #logo_search button {
+        height: 41px;
+        width: 80px;
+        background-color: #2D2E30;
+        border: none;
+        margin-top: 19px;
+    }
+    
+    #logo_search p {
+        font-family: Open_Sans;
+    }
+    
+    .logo_search #call {
+        font-size: 14px;
+    }
+    
+    .logo_search #phone {
+        font-size: 100px;
+    }
