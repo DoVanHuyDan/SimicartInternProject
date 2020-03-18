@@ -73,9 +73,6 @@
     /*lam sao de cho cai rectangel 1 nay vao chinh giua dc a , e da thu nhg k dc */
     
     #rectangle1 {
-        position: absolute;
-        left: 55px;
-        right: 55px;
         padding: 15px 20px;
     }
     
@@ -97,13 +94,9 @@
         display: inline;
         margin-left: 250px;
     }
-    /* #rectangle1 div {
-        border: 1px solid white;
-    } */
     /*logo + search*/
     
     #logo_search {
-        border: 1px solid black;
         width: 1280px;
         height: 79px;
         position: absolute;
@@ -111,28 +104,61 @@
         margin: 0 15px;
     }
     
-    #logo_search input {
+    #logo_search .col-sm-6 {
+        width: 476px;
+        height: 41px;
+        padding-left: 33.5px;
+    }
+    
+    #logo_search .col-sm-6 input {
         width: 396px;
         height: 41px;
-        margin-top: 19px;
     }
     
-    #logo_search button {
-        height: 41px;
+    #logo_search .col-sm-6 button {
         width: 80px;
-        background-color: #2D2E30;
+        height: 41px;
         border: none;
-        margin-top: 19px;
+        background-color: #2D2E30;
     }
+    /* ??? lam tn de cai button va input k bi lech nhau v a? */
     
-    #logo_search p {
+    #logo_search #call {
+        color: #2D2E30;
+        width: 164px;
+        height: 14px;
+        text-align: center;
         font-family: Open_Sans;
-    }
-    
-    .logo_search #call {
         font-size: 14px;
     }
     
-    .logo_search #phone {
-        font-size: 100px;
+    #logo_search #phone {
+        width: 223px;
+        height: 34px;
+        font-family: Open_Sans;
+        text-align: center;
+        font-size: 34px;
+        color: #2D2E30;
+    }
+    /*Navigation*/
+    
+    .navigation {
+        text-align: center;
+        position: absolute;
+        top: 217px;
+        left: 177.5px;
+    }
+    
+    .navigation ul {
+        width: 925px;
+        height: 16px;
+        font-size: 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-family: Open_Sans;
+        margin: 0 auto;
+    }
+    
+    .navigation ul a {
+        color: #2D2E30;
     }
