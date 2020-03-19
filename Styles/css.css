@@ -1,164 +1,280 @@
-    @font-face {
-        font-family: Open_Sans;
-        src: url(../fonts/Open_Sans/OpenSans-Bold.ttf);
-    }
-    
-    * {
-        box-sizing: border-box;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    body {
-        width: 1280px;
-        height: 4965px;
-        border: 1px solid black;
-        padding: 0;
-        margin: 0 auto;
-    }
-    
-    header {
-        width: inherit;
-        height: 257px;
-        padding: 0;
-        margin-left: -15px;
-        margin-right: -15px;
-        position: relative;
-    }
-    /* Rectangle */
-    
-    #rectangle {
-        width: inherit;
-        height: 35px;
-        background-color: #000;
-        margin-left: 15px;
-        margin-bottom: 0;
-        color: #fff;
-        padding-left: 55px;
-        padding-right: 55px;
-    }
-    
-    #rectangle1 {
-        width: 1170px;
-        height: 55px;
-        background-color: #FF5B8F;
-        margin: 0 auto;
-        margin-top: 0;
-        padding-top: 9.5px;
-    }
-    
-    #rectangle_left a {
-        color: white;
-        display: inline;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Open_Sans;
-        font-size: 12px;
-    }
-    
-    #rectangle img {
-        margin-right: 8px;
-    }
-    
-    #rectangle_right a {
-        text-transform: uppercase;
-        font-size: 12px;
-        font-family: Open_Sans;
-        color: white;
-        text-decoration: none;
-    }
-    /* Rectangle1 */
-    /*lam sao de cho cai rectangel 1 nay vao chinh giua dc a , e da thu nhg k dc */
-    
-    #rectangle1 {
-        padding: 15px 20px;
-    }
-    
-    #rectangle1 p {
-        color: white;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Open_Sans;
-        font-size: 18px;
-        display: inline;
-    }
-    
-    #rectangle1 a {
-        color: white;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Open_Sans;
-        font-size: 18px;
-        display: inline;
-        margin-left: 250px;
-    }
-    /*logo + search*/
-    
-    #logo_search {
-        width: 1280px;
-        height: 79px;
-        position: absolute;
-        top: 111px;
-        margin: 0 15px;
-    }
-    
-    #logo_search .col-sm-6 {
-        width: 476px;
-        height: 41px;
-        padding-left: 33.5px;
-    }
-    
-    #logo_search .col-sm-6 input {
-        width: 396px;
-        height: 41px;
-    }
-    
-    #logo_search .col-sm-6 button {
-        width: 80px;
-        height: 41px;
-        border: none;
-        background-color: #2D2E30;
-    }
-    /* ??? lam tn de cai button va input k bi lech nhau v a? */
-    
-    #logo_search #call {
-        color: #2D2E30;
-        width: 164px;
-        height: 14px;
-        text-align: center;
-        font-family: Open_Sans;
-        font-size: 14px;
-    }
-    
-    #logo_search #phone {
-        width: 223px;
-        height: 34px;
-        font-family: Open_Sans;
-        text-align: center;
-        font-size: 34px;
-        color: #2D2E30;
-    }
-    /*Navigation*/
-    
-    .navigation {
-        text-align: center;
-        position: absolute;
-        top: 217px;
-        left: 177.5px;
-    }
-    
-    .navigation ul {
-        width: 925px;
-        height: 16px;
-        font-size: 15px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-family: Open_Sans;
-        margin: 0 auto;
-    }
-    
-    .navigation ul a {
-        color: #2D2E30;
-    }
+@font-face {
+    font-family: OpenSans_regular;
+    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf)
+}
+
+@font-face {
+    font-family: OpenSans_bold;
+    src: url(../fonts/Open_Sans_700_bold/OpenSans-Bold.ttf)
+}
+
+body {
+    width: auto;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+}
+
+
+/*TOPLINK*/
+
+ul {
+    list-style-type: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#body {
+    width: 1280px;
+    height: 4965px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+#toplink {
+    width: auto;
+    height: 35px;
+    background-color: #000;
+}
+
+#toplink a {
+    color: #FFF;
+    font-family: OpenSans_regular;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#toplink:hover {
+    color: violet;
+}
+
+.toplinkright li {
+    float: left;
+    margin-left: 30px;
+}
+
+.toplinkleft li {
+    float: left;
+}
+
+.toplinkleft ul {
+    margin-left: 55px;
+}
+
+
+/*can le ben phai cua toplink sao cho du 55px / va vertical align*/
+
+.pinkrectangle {
+    height: 55px;
+    width: auto;
+    background-color: #FF5B8F;
+    margin: 0 55px;
+}
+
+.pinkrectangle a {
+    text-decoration: none;
+    font-size: 18px;
+    font-family: OpenSans_regular;
+    color: #FFF;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin: 15px 20px;
+}
+
+.pinkrectangle a:hover {
+    text-decoration: none;
+}
+
+
+/* <!--LOGO + SEARCH + CALL-->*/
+
+.loseca {
+    height: 79px;
+    margin-top: 21px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loseca .logo img {
+    margin-left: 40px;
+}
+
+.loseca .search {
+    width: 476px;
+    height: 41px;
+    padding-top: 15px;
+}
+
+.loseca .search button {
+    width: 80px;
+    background-color: #2D2E30;
+    border: none;
+}
+
+.call #sms {
+    height: 14px;
+    width: 164px;
+    font-family: OpenSans_bold;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.call #phonenumber {
+    height: 34px;
+    width: 223px;
+    font-family: OpenSans_bold;
+    font-size: 34px;
+    font-weight: 700;
+    margin-top: -6px;
+}
+
+
+/*   <!--MENU-->*/
+
+.menu {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 17px;
+    text-align: center;
+}
+
+.menu ul {
+    margin: 0 auto;
+}
+
+.menu ul li {
+    padding-right: 33px;
+}
+
+.menu ul a {
+    color: #2D2E30;
+    font-family: OpenSans_bold;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 15px;
+    text-transform: uppercase;
+}
+
+
+/*<!--CONTENT-->*/
+
+
+/*   <!--WELLCOME-->*/
+
+.wellcome {
+    margin-top: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.wellcome img {
+    margin: 0 auto;
+    display: block;
+}
+
+.wellcome button {
+    width: 137px;
+    height: 40px;
+    background-color: #FF5B8F;
+    color: #FFF;
+    position: absolute;
+    bottom: 66px;
+    right: 240px;
+    text-transform: uppercase;
+    font-family: OpenSans_regular;
+    font-size: 16px;
+}
+
+
+/*<!--MENUICON-->*/
+
+.menuicon {
+    height: 113pxpx;
+    width: auto;
+    margin-top: 50px;
+    margin-right: 83px;
+    margin-left: 83px;
+}
+
+.menuicon .col {
+    text-align: center;
+    font-family: OpenSans_bold;
+    color: #2D2E30;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+
+/*cac text dang bi lech , chinh sau*/
+
+
+/* <!--NEW PRODUCT MENU-->*/
+
+.newproductmenu {
+    background-color: #000;
+    height: 57px;
+    width: auto;
+    margin-left: 55px;
+    margin-right: 55px;
+    margin-top: 50px;
+}
+
+.newproductmenu p {
+    text-align: center;
+    font-family: OpenSans_bold;
+    font-size: 18px;
+    color: #FFF;
+    margin-top: 19.5px;
+}
+
+.newproductmenu a {
+    display: inline-block;
+    width: 150px;
+    height: 47px;
+    text-decoration: none;
+    font-family: OpenSans_regular;
+    font-size: 15px;
+    margin-top: 21px;
+    color: white;
+}
+
+.newproductmenu a:hover {
+    background-color: #FFF;
+    color: #2D2E30;
+}
+
+
+/*    <!--NEW PRODUCT LIST-->*/
+
+
+/*nen dung cai j de hien thi so sao*/
+
+.newproductlist {
+    height: 437px;
+    width: auto;
+    margin-top: 30px;
+    margin-left: 55px;
+    margin-right: 55px;
+}
+
+.newproductlist card {
+    height: auto;
+}
+
+.newproductlist .btn {
+    background-color: #FF5B8F;
+    color: #FFF;
+    font-family: OpenSans_bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    height: 40px;
+    border-radius: 0;
+}
+
+
+/*can dat button de len anh cuar sp*/
