@@ -260,10 +260,12 @@ a:hover {
     margin-top: 30px;
     margin-left: 55px;
     margin-right: 55px;
+    font-family: OpenSans_regular;
 }
 
-.newproductlist card {
+.newproductlist .card {
     height: auto;
+    border: none;
 }
 
 .newproductlist .btn {
@@ -274,7 +276,245 @@ a:hover {
     text-transform: uppercase;
     height: 40px;
     border-radius: 0;
+    display: none;
+}
+
+.newproductlist .card:hover .btn {
+    display: initial;
+}
+
+.newproductmenu span {
+    color: #FF5C90;
+}
+
+span:nth-child(2) {
+    color: #FF5C90;
 }
 
 
 /*can dat button de len anh cuar sp*/
+
+.veiwalllink a {
+    font-family: OpenSans_regular;
+    font-size: 15px;
+    color: #FF5B8F;
+    margin-right: 55px;
+}
+
+.veiwalllink {
+    margin-top: 60px;
+}
+
+.veiwalllink a:hover {
+    color: mediumvioletred;
+}
+
+
+/* <!--BANNER-->*/
+
+.banner {
+    width: auto;
+    margin-left: 55px;
+    margin-right: 55px;
+    margin-top: 100px;
+}
+
+.banner .row>div {
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/*   <!--ON SALES NOW + BANNER RIGHT-->*/
+
+
+/*<!--ON SALE NOW-->*/
+
+.onsalenow_bannerright {
+    margin-top: 20px;
+}
+
+.onsalenow .counter b {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    background-color: #FF5C90;
+}
+
+.onsalenow .counter span {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 7px;
+}
+
+.counter {
+    margin-left: 55px;
+    text-align: center;
+}
+
+.counter strong {
+    font-family: OpenSans_bold;
+    font-size: 24px;
+    color: #2D2E30;
+    text-transform: uppercase;
+}
+
+.onsale {
+    margin-left: 55px;
+    margin-right: 19px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.card {
+    border: none;
+}
+
+.viewmore a {
+    color: #2D2E30;
+    font-family: OpenSans_bold;
+    font-size: 15px;
+}
+
+.viewmore a:hover {
+    color: #FF5B8F;
+}
+
+.viewmore {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.shopbycategorytitle b {
+    color: #2D2E30;
+    font-family: OpenSans_bold;
+    font-size: 24px;
+    margin-top: 60px;
+    margin-bottom: 68px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shopbycategory {
+    margin-left: 55px;
+    margin-right: 19px;
+}
+
+.shopbycategory .col-md-4 {
+    padding-right: 10px;
+}
+
+.shopbycategory .row {
+    margin-bottom: 32px;
+}
+
+.longbanner {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.longbanner button {
+    position: absolute;
+    left: 70px;
+    bottom: 52px;
+    width: 137px;
+    height: 40px;
+    background-color: #FF5B8F;
+    color: #FFF;
+    text-transform: uppercase;
+    font-family: OpenSans_regular;
+    font-size: 16px;
+    border: none
+}
+
+.bannerlikepage .col {
+    position: relative;
+}
+
+.bannerlikepage .col div {
+    margin: 0 auto;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.bannerlikepage button {
+    height: 27px;
+    width: 112px;
+    background-color: #FFF;
+    color: #2D2E30;
+    font-family: OpenSans_regular;
+    font-size: 12px;
+    position: absolute;
+    top: 112px;
+    border: none;
+}
+
+.bannerlikepage .like-page {
+    left: 10px;
+}
+
+.bannerlikepage .send-message {
+    left: 155px;
+}
+
+
+/*   <!--STORE IN STORE-->*/
+
+.store-in-store {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    width: auto;
+}
+
+.store-in-store .title {
+    height: 25px;
+    text-align: center;
+    color: #2D2E30;
+    font-family: OpenSans_bold;
+    font-size: 24px;
+}
+
+.store-in-store .col-md-3 div {
+    height: 244px;
+    width: 278px;
+    background-color: gray;
+    margin: 0 auto;
+}
+
+.what-are-saying .title {
+    margin-top: 50px;
+}
+
+.what-are-saying .title b {
+    margin: 0 auto;
+    text-align: center;
+    color: #2D2E30;
+    font-family: OpenSans_bold;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.what-are-saying .productlist {
+    margin-right: 55px;
+    margin-left: 55px;
+    margin-top: 58px;
+    margin-bottom: 94px;
+}
+
+
+/*   <!--SPONSORS-->*/
+
+.sponsors {
+    margin: 0 55px 100px 55px;
+    width: auto;
+}
+
+
+/*<!--FOOTER-->*/
