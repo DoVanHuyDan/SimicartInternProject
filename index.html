@@ -137,13 +137,50 @@
         <!--CONTENT-->
         <div id="content" class="container-fluid">
             <!--wellcome-->
-            <div class="row wellcome">
+            <!-- <div class="row wellcome">
                 <div class="col-md-12">
                     <img id="wellcomeimg" src="images/heroBannerherobanner.png" class="img-fluid" alt="welcome">
                     <button class="btn">shop now</button>
-                    <!--Button list-->
+                    
+                </div>
+            </div> -->
+
+            <!--Wellcome slider-->
+            <div class="row wellcome">
+                <div id="wellcomeslider" class="carousel slide col-md-12" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#wellcomeslider" data-slide-to="0" class="active"></li>
+                        <li data-target="#wellcomeslider" data-slide-to="1"></li>
+                        <li data-target="#wellcomeslider" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/heroBannerherobanner.png" class="img-fluid" alt="Los Angeles">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/sl1.jpg" alt="Chicago" class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="images/sl2.jpg" alt="New York" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#wellcomeslider" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#wellcomeslider" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <button class="btn">shop now</button>
                 </div>
             </div>
+
+
 
             <!--menu icons-->
             <div class="row menuicon">
@@ -316,7 +353,7 @@
                     <!--ON SALE NOW + SHOP BY CATEGORY : LEFT SIDE-->
                     <div class="col-md-9 onsalenow">
                         <!--ON SALE NOW-->
-                        <div class="row counter  ">
+                        <div class="row counter" id="counter">
                             <div class="col-md-12">
                                 <a href="#" class="float-md-left "><img src="images/lessthan.png" class="lessthan float-left" alt="lessthan"></a>
                                 <strong> ON SALE NOW | ENDS IN</strong>&nbsp;&nbsp;
@@ -392,82 +429,7 @@
                             </div>
                         </div>
 
-                        <!--   SHOP BY CATEGORY-->
-                        <div class="row shopbycategorytitle no-gutters">
-                            <b>   SHOP BY CATEGORY </b>
-                        </div>
-                        <div class="row shopbycategory no-gutters">
-                            <div class="col-md-4 ">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
 
-                                            <img src="images/dildosnarrowright.png" class="card-img-top img-fluid" alt="">
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-
-                                            <img src="images/sm fetish.png" class="card-img-top img-fluid" alt="">
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-
-                                            <img src="images/lubricants.png" class="card-img-top img-fluid" alt="">
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-
-                                            <img src="images/masturbators.png" class="card-img-top img-fluid" alt="">
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-
-                                            <img src="images/penis ring.png" class="card-img-top img-fluid" alt="">
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card">
-
-                                            <img src="images/vibrators.png" class="card-img-top img-fluid" alt="">
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <!--RIGHT BANNER : RIGHT SIDE-->
@@ -492,6 +454,84 @@
                                 </div>
                                 <button class="btn btn-primary like-page "><i class="fa fa-facebook" aria-hidden="true"></i>Like Page</button>
                                 <button class="btn btn-primary send-message "><i class="fas fa-facebook-messenger"></i>Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--   SHOP BY CATEGORY-->
+                <div class="container-fluid shop-by-category-box">
+                    <div class="row shopbycategorytitle no-gutters">
+                        <b>   SHOP BY CATEGORY </b>
+                    </div>
+                    <div class="row shopbycategory no-gutters">
+                        <div class="col-md-4 ">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/dildosnarrowright.png" class="card-img-top img-fluid" alt="">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/sm fetish.png" class="card-img-top img-fluid" alt="">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/lubricants.png" class="card-img-top img-fluid" alt="">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/masturbators.png" class="card-img-top img-fluid" alt="">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/penis ring.png" class="card-img-top img-fluid" alt="">
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+
+                                        <img src="images/vibrators.png" class="card-img-top img-fluid" alt="">
+
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
