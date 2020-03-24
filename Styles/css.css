@@ -118,11 +118,16 @@
                /*welcome*/
                
                .wellcome {
-                   width: fit-content;
+                   /* width: fit-content; */
                    margin-top: 3px;
                    margin-left: auto;
                    margin-right: auto;
                    position: relative;
+               }
+               
+               .wellcome .carousel-inner .img-slider {
+                   margin: 0 auto;
+                   display: block;
                }
                
                .wellcome button {
