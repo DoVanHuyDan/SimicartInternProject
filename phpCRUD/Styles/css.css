@@ -1,0 +1,11 @@
+#form
+{
+    width: 500px;
+    height: fit-content;
+    margin: auto;
+}
+
+#form span
+{
+    color: red;
+}
