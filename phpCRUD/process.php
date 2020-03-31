@@ -29,8 +29,19 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' )
     $name = testInput( $_POST['name'] );
     $location = testInput( $_POST['location'] );
 
-    $ctr = new Controler();;
-    $ctr->createData($name, $location);
+    $ctr = new Controler();
+    if( isset($_POST['save']) ) // if click on save
+    {
+        $ctr->createData($name, $location);
+      
+ }
+
+    if( isset($_POST['update']) )  // if click on update
+    {   
+        $id = (int)$_POST['update']; // get $id from value attribute of button (update) from index.php if it has been clicked
+        $ctr->updateRow($id, $name, $location); 
+        
+    }
     
 }
 
@@ -46,17 +57,7 @@ $view = new View();
 $view->showData();
 
 
-// edit date
-if( isset($_GET['edit']) )
-{
-    $id = $_GET['edit'];
-    $getRow = new Controler();
-    $row = $getRow->getRow($id);
-    
-    $name = $row['name'];
-    $location = $row['location'];
-    
-}
+
 
 
 

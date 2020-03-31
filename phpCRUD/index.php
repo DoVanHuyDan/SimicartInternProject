@@ -23,8 +23,10 @@
 
 include_once 'classes/controler.class.php';
 
-$name='';
-$location='';
+$name = '';
+$location = '';
+$update = false;
+$id = '';
   // edit date
 if( isset($_GET['edit']) )
 {
@@ -32,9 +34,9 @@ if( isset($_GET['edit']) )
     $getRow = new Controler();
     $row = $getRow->getRow($id);
     
-    $name = $row['name'];
-    $location = $row['location'];
-    
+    $name = $row[0];
+    $location = $row[1];
+    $update = true;
 }
 
 ?>
@@ -50,8 +52,18 @@ if( isset($_GET['edit']) )
     <label for="location">Location</label><span>*</span>
     <input type="text" name="location" value="<?php echo $location; ?>" class="form-control" id="Location" placeholder="Location">
   </div>
+  <?php
+  // if edit button has been clicked -> $update = true
+    if( $update )
+    {
+      // pass $id of row to update 
+      echo '<button type="submit" name="update" value="' . $id . '" class="btn btn-primary">Update</button>';
+    }
+    else{
+      echo ' <button type="submit" name="save" class="btn btn-primary">Save</button>';
+    }
+  ?>
  
-  <button type="submit" class="btn btn-primary">Save</button>
 </form>
   </div>
   

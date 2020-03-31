@@ -21,10 +21,12 @@
             <tbody>';
 
 
+           if( $allData ) // if $allData has been returned null -> show nothing
+           {
             foreach($allData as $row)
             {
                 echo '
-                <tr>
+              <tr>
                 <td>' . $row['name'] . '</td>
                 <td>'. $row['location'] .'</td>
                 <td>
@@ -33,13 +35,14 @@
                 </td>
               </tr>';
             }
-        
+           }
+            
             echo '
             </tbody>
             </table>
             </div>';
 
-            echo ' <a href="index.php"><button type="button" class="btn btn-primary">Add</button></a>';
+            echo ' <a id="add" href="index.php"><button type="button" class="btn btn-primary">Add</button></a>';
            
 
         }

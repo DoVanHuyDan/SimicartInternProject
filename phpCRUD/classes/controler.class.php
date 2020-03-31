@@ -18,5 +18,11 @@
         {
             return $this->selectRow($id);
         }
+
+
+        public function updateRow($id,$name,$location)
+        {
+            $this->updateData($id, $name, $location);
+        }
     }
 ?>
