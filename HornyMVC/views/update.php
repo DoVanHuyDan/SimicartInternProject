@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>PDO - Update a Record - PHP CRUD Tutorial</title>
+    <title>Horny</title>
 
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="css/css.css">
@@ -16,54 +16,104 @@
 <body>
 
     <?php
-
+    $action = '';
+    $param = '' ; // parameter to pass in URL when submit the form bellow
     include_once 'models/dbinteractions.php';
 
     $dbinteraction = new DbInteractions();
-    // this file is included by controller, so we can get directly $if from there
-    $record = $dbinteraction->getOneRecord($id);
 
-
-
-    ?>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") // if clicked on save changes
-    {
-        $name = $_POST['name'];
-        $price = $_POST['price'];
-        $image = $_POST['image'];
-
-        echo 'helo';
+    if( empty($id) ) // if $id == null means that op = create new record ,not update any curent one 
+    {                   // just pass $id from controller when updating
+        $action = 'createnew';
+        $param = '?op=createnew';
     }
+    else
+    {
+         $action = 'update';
+             // this file is included by controller, so we can get directly $if from there
+         $record = $dbinteraction->getOneRecord($id);
+         $param ="?id=$id&op=update";
+    }
+   
+
+
+
     ?>
+
 
 
     <div class="container">
 
         <div class="page-header">
-            <h1>Update Product</h1>
+           <?php
+                if ( $action == 'update' ) 
+                {
+                    echo ' <h1>Update Product</h1>';
+                }
+                else{
+                    echo ' <h1>Create New Product</h1>';
+                }
+           ?>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}&op=update"); ?>" method="post">
-            <table class='table table-hover table-responsive table-bordered'>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . $param); ?>" method="post" enctype="multipart/form-data">
+            <table class='table table-hover table-responsive '>
                 <tr>
-                    <td>Name</td>
-                    <td><input type='text' name='name' value="<?php echo htmlspecialchars($record['name'], ENT_QUOTES);  ?>" class='form-control' /></td>
+                    <td>Name</td>                                      <!--if $id is set / exsits means that update method has been called from controller then we show value of Record with id = $id here-->
+                    <td><input type='text' name='name' value="<?php echo isset( $id ) ? htmlspecialchars($record['name'], ENT_QUOTES) : '';  ?>" class='form-control' /></td>
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td><textarea name='price' class='form-control'><?php echo htmlspecialchars($record['price'], ENT_QUOTES);  ?></textarea></td>
+                    <td><textarea name='price' class='form-control'><?php echo isset( $id ) ? htmlspecialchars($record['price'], ENT_QUOTES) : '';  ?></textarea></td>
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td> buttun to upload file here <input name="image" value="img here"> </td>
+                    <!--if we are creating a new product - > upload img-->
+                    <?php
+
+                        if( $action =='createnew' )
+                        {
+                            echo '
+                            <td><input name="image" type="file" ></td>
+                            ';
+                        }
+                        elseif( $action='update' )
+                        {   
+                            // create a non-display input to save and pass the path of product's image to controller's update function
+                            echo '
+                           
+                            <td>
+                            <img src="'. $record['image'] . '" alt="image here">
+                            <input type="text" style="display: none" value="'. $record['image'] .'" name="oldImage">
+                            <span>you can choose other image here</span>
+                            <input name="image" type="file">
+                            </td>
+                            ';
+                        }
+                        
+                    ?>
+                    
+                    
+                    
+                   
                 </tr>
                 <tr>
                     <td></td>
                     <td>
-                        <!--click save change will sent data with POST , then handle request will be call-->
+
+                    <?php
+
+                        if( $action == 'update' )
+                         echo "
                         <input type='submit' value='Save Changes' class='btn btn-primary' />
+                        ";
+                        elseif( $action == 'createnew' ){
+                        echo "
+                        <input type='submit' value='Create New Product' class='btn btn-primary' />
+                        ";
+                        }
+                    ?>
+                        <!--click save change / create new product will sent data with POST , then handle request will be call-->
                         <a href='index.php' class='btn btn-danger'>Back products page</a>
                     </td>
                 </tr>

@@ -53,6 +53,7 @@
                 echo "    <td>$name</td>";
                 echo "    <td>$price</td>";
                 echo "<td>";
+                // all links bellow + params will be sent by GET when click on any of these links 
                 // read one record 
                 echo "<a href='index.php?id=$id&op=showDetail' class='btn btn-info m-r-1em'>Detail</a>";
 
@@ -78,7 +79,7 @@
         }
 
         // create a new product 
-        echo "<a href='views/createnew.php' class='btn btn-primary m-b-1em'>Create New </a>";
+        echo "<a href='index.php?op=createnew' class='btn btn-primary m-b-1em'>Create New </a>";
 
 
         ?>
