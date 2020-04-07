@@ -6,8 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="php.php">link</a>
-    <img src="/HornyMVC/upload" alt="">
-   
+    
 </body>
 </html>

@@ -56,7 +56,7 @@
            ?>
         </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . $param); ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo 'http://localhost/HornyMVC/index.php' . $param; ?>" method="post" enctype="multipart/form-data">
             <table class='table table-hover table-responsive '>
                 <tr>
                     <td>Name</td>                                      <!--if $id is set / exsits means that update method has been called from controller then we show value of Record with id = $id here-->

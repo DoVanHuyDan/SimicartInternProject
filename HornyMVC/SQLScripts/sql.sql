@@ -11,3 +11,7 @@ CREATE TABLE products (
 ); 
 
 
+INSERT INTO products (image, name, price) VALUES ('imeg', 'name1', 1);
+INSERT INTO products (image, name, price) VALUES ('imeg', 'name2', 2);
+INSERT INTO products (image, name, price) VALUES ('imeg', 'name3', 3);
+INSERT INTO products (image, name, price) VALUES ('imeg', 'name4', 4);
