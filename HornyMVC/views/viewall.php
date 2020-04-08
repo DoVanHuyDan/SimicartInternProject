@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HORNY</title>
 
-    <link rel="stylesheet" href="css/css.css">
+    <link rel="stylesheet" href="/HornyMVC/css/css.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/css.css">
+    
 </head>
 
 <body>
-    
+
 
     <div class="container">
 
@@ -25,6 +25,8 @@
         </div>
 
         <?php
+
+
 
         include_once 'models/dbinteractions.php';
 
@@ -55,10 +57,11 @@
                 echo "<td>";
                 // all links bellow + params will be sent by GET when click on any of these links 
                 // read one record 
-                echo "<a href='index.php?id=$id&op=showDetail' class='btn btn-info m-r-1em'>Detail</a>";
-
+                //  echo "<a href='index.php?id=$id&op=showDetail' class='btn btn-info m-r-1em'>Detail</a>";
+                echo "<a href='/HornyMVC/admin/detail/$id' class='btn btn-info m-r-1em'>Detail</a>";
                 // we will use this links on next part of this post
-                echo "<a href='index.php?id=$id&op=showUpdateForm' class='btn btn-primary m-r-1em'>Edit</a>";
+                //  echo "<a href='index.php?id=$id&op=showUpdateForm' class='btn btn-primary m-r-1em'>Edit</a>";
+                echo "<a href='/HornyMVC/admin/form/update/$id' class='btn btn-primary m-r-1em'>Edit</a>";
 
                 // we will use this links on next part of this post
                 echo "<a href='#' onclick='delete_user($id);'  class='btn btn-danger'>Delete</a>";
@@ -79,7 +82,8 @@
         }
 
         // create a new product 
-        echo "<a href='index.php?op=createnew' class='btn btn-primary m-b-1em'>Create New </a>";
+        //echo "<a href='index.php?op=createnew' class='btn btn-primary m-b-1em'>Create New </a>";
+        echo "<a href='/HornyMVC/admin/form/createnew' class='btn btn-primary m-b-1em'>Create New </a>";
 
 
         ?>
@@ -95,8 +99,8 @@
             var answer = confirm('Are you sure?');
             if (answer) {
                 // if user clicked ok, 
-                // pass the id to delete.php and execute the delete query
-                window.location = 'index.php?op=delete&id=' + id;
+                
+                window.location = '/HornyMVC/admin/list.html/delete/' + id;
             }
         }
     </script>

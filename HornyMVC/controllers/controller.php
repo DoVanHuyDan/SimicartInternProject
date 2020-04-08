@@ -3,7 +3,12 @@
 include_once 'models/dbinteractions.php';
 
 class Controller extends DbInteractions
-{
+{   
+
+    public function pageNotFound()
+    {
+        include_once '../HornyMVC/views/404-notfound-page.html';
+    }
 
     public function showAll()
     {
@@ -68,37 +73,43 @@ class Controller extends DbInteractions
         $this->deleteImage($this->getOneRecord($id)['image']);
         $this->deleteRecord($id);
         // after delete, show all products 
-        header("location: index.php");
+        header("location: /HornyMVC/admin/list.html");
        // include_once 'views/viewall.php';
     }
 
-    public function createNew($name, $price)
+    public function saveNew($name, $price,$file)
     {    // assign $image  = path to the uploaed image
         $image = $this->uploadFile();
 
         if (empty($name) || empty($price) || empty($image)) {
-            echo '
+            
+
+            header('location: createnew');
+            // echo '
                 
-                <div class="alert alert-danger" role="alert">
-                 you need to fill up all fields!
-                </div>
+            //     <div class="alert alert-danger" role="alert">
+            //      you need to fill up all fields!
+            //     </div>
                 
-                ';
-            include_once 'views/update.php';
+            //     ';
+            // //include_once 'views/update.php';
         } else {
 
 
             $this->createNewRecord($image, $name, $price);
 
-            echo '
+            // echo '
 
-                <div class="alert alert-primary" role="alert">
-                Created and saved!
-                </div>
+            //     <div class="alert alert-primary" role="alert">
+            //     Created and saved!
+            //     </div>
                 
-                ';
+            //     ';
             // after created , show all
-            include_once 'views/viewall.php';
+
+            header("location: /HornyMVC/admin/list.html");
+
+            //include_once 'views/viewall.php';
         }
     }
 
@@ -107,6 +118,7 @@ class Controller extends DbInteractions
     {
         // if users do not upload any file -> return null
         if (empty($_FILES['image']['size'])) {
+           
             return null;
         } else {
 
@@ -146,43 +158,82 @@ class Controller extends DbInteractions
     }
 
     // method to handle requests sent by GET
-    public function handleRequests()
+    // public function handleRequests()
+    // {
+
+    //     // if user click on any links / button on viewall page , means that param has been sent here by GET
+    //     if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+    //         $op = isset($_GET['op']) ? $_GET['op'] : null;
+
+    //         try {
+
+
+
+    //             if (!$op || $op == "showall") {
+    //                 $this->showAll();
+    //             } elseif ($op == "showDetail") {
+    //                 $this->showDetail($_GET['id']);
+    //             } elseif ($op == "delete") {
+    //                 $this->deleteOneRecord($_GET['id']);
+    //             } elseif ($op == "showUpdateForm") {
+    //                 $this->showUpdateForm($_GET['id']);
+    //             } elseif ($op == "createnew") {
+    //                 $this->showUpdateForm();
+    //             }
+    //         } catch (Exception $e) {
+    //             echo $e->getMessage();
+    //         }
+    //     } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    //         // op just will be sent by POST when user updates data for a product / create  new one
+    //         $op = isset($_GET['op']) ? $_GET['op'] : null;
+
+    //         if ($op == "update") {
+
+    //             $this->update($_GET['id'], $_POST['name'], $_POST['price'], $_POST['oldImage']);
+    //         } elseif ($op == "saveNew") {
+    //             $this->saveNew($_POST['name'], $_POST['price']);
+    //         }
+    //     }
+    // }
+
+
+    public function handleRequests($op,$id='',$name='',$price='',$file='',$oldImage='')
     {
+        switch ($op)
+        {
+            case '404':
+                $this->pageNotFound();
+            break;
 
-        // if user click on any links / button on viewall page , means that param has been sent here by GET
-        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            case 'showAll':
+                $this->showAll();
+            break;
 
-            $op = isset($_GET['op']) ? $_GET['op'] : null;
+            case 'showDetail' :
+                $this->showDetail($id);
+            break;
 
-            try {
+            case 'createnew':
+                $this->showUpdateForm();
+            break;
 
+            case 'update':
+                $this->showUpdateForm($id);
+            break;
 
+            case 'save':
+                $this->saveNew($name,$price,$file);
+            break;
 
-                if (!$op || $op == "showall") {
-                    $this->showAll();
-                } elseif ($op == "showDetail") {
-                    $this->showDetail($_GET['id']);
-                } elseif ($op == "delete") {
-                    $this->deleteOneRecord($_GET['id']);
-                } elseif ($op == "showUpdateForm") {
-                    $this->showUpdateForm($_GET['id']);
-                } elseif ($op == "createnew") {
-                    $this->showUpdateForm();
-                }
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-        } elseif ($_SERVER['REQUEST_METHOD'] == "POST") {
+            case 'delete':
+                $this->deleteOneRecord($id);
+            break;
 
-            // op just will be sent by POST when user updates data for a product / create  new one
-            $op = isset($_GET['op']) ? $_GET['op'] : null;
-
-            if ($op == "update") {
-
-                $this->update($_GET['id'], $_POST['name'], $_POST['price'], $_POST['oldImage']);
-            } elseif ($op == "createnew") {
-                $this->createNew($_POST['name'], $_POST['price']);
-            }
+            case 'updateChange':
+                $this->update($id, $name,$price,$oldImage);
+            break;
         }
     }
 }
