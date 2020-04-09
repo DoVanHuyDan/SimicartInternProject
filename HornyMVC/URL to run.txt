@@ -1,0 +1,8 @@
+# http://localhost/HornyMVC   -> show list
+# http://localhost/HornyMVC/admin -> show list 
+# http://localhost/HornyMVC/admin/list.html -> show list 
+# http://localhost/HornyMVC/admin/detail/id -> show detail of item having id = id 
+# http://localhost/HornyMVC/admin/delete/id - > delte item having id = id 
+# http://localhost/HornyMVC/admin/form/createnew -> createnew
+# http://localhost/HornyMVC/admin/form/update/id -> update item having id = id 
+# others -> list.html
