@@ -5,6 +5,31 @@ class Router
 {
     public $controller = '';
     public $op = '';
+
+
+    function getURL()
+    {
+        // http://localhost/training/huy/HornyMVC/php.php 
+
+        $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
+            $_SERVER['SERVER_NAME'] . "/";
+        // $url = http://localhost/
+        $arr = explode("/", $_SERVER['REQUEST_URI']);
+        // $_SERVER['REQUEST_URI'] = /training/huy/HornyMVC/php.php 
+        // $arr = ("","training", "huy", "HornyMVC", "php.php")
+
+        $arr = array_slice($arr, 0, array_search("HornyMVC", $arr));
+        // $arr = ("","training", "huy") 
+        foreach ($arr as $r) {
+            if (!empty($r)) {
+                $url =  $url . $r . "/";
+            }
+        }
+
+        return $url; // http://localhost/training/huy/
+    }
+
+
     public function parseURL()
     {
         // get url from link / see .htaccess for more details about where url comes from
@@ -12,12 +37,14 @@ class Router
 
         $url = explode('/', trim($url));
 
+        $url = array_slice($url, array_search("HornyMVC", $url) ? array_search("HornyMVC", $url) + 1 : 0);
 
         return $url;
     }
 
     public function routing()
     {
+
 
 
         $this->controller = new Controller();
@@ -31,7 +58,7 @@ class Router
             if (!empty($url[1])) {
                 switch ($url[1]) {
                     case 'list.html': // admin/list.html / A / B 
-                        if (!empty($url[2]) && $url[2] == 'delete' && is_numeric(($url[3])) ) {
+                        if (!empty($url[2]) && $url[2] == 'delete' && is_numeric(($url[3]))) {
                             // delete item 
                             // admin/list.html/delte/id
 
@@ -39,9 +66,10 @@ class Router
                             $this->controller->handleRequests($this->op, $url['3']);
                             break;
                         } else {
+                           
                             // Show all
                             // admin/list.html
-                            
+
                             $this->op = 'showAll';
                             $this->controller->handleRequests($this->op);
                             break;
@@ -97,21 +125,23 @@ class Router
                             $this->controller->handleRequests($this->op);
                         }
 
-                    break;
+                        break;
                     default:
-                        header("location: /HornyMVC/admin/list.html");
+                        header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
                         break;
                 }
             } else {
                 // if page not found - > show all 
-                header("location: /HornyMVC/admin/list.html");
+                header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
             }
         } else {
             // if page not found - > show all 
-            header("location: /HornyMVC/admin/list.html");
+            header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
         }
     }
 }
+
+
 
 $router = new Router();
 $router->routing();

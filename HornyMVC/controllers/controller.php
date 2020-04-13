@@ -1,29 +1,32 @@
 <?php
 
-include_once 'models/dbinteractions.php';
+include_once( dirname(__DIR__) . "/models/dbinteractions.php" );
+include_once( dirname(__DIR__) . "/helper.php" );
 
 class Controller extends DbInteractions
 {   
+    
 
     public function pageNotFound()
     {
-        include_once '../HornyMVC/views/404-notfound-page.html';
+        include_once( dirname(__DIR__) . "/views/404-notfound-page.html" );
     }
 
     public function showAll()
     {
-        include_once 'views/viewall.php';
+        include_once( dirname(__DIR__) . "/views/viewall.php" );
+
     }
 
     public function showDetail($id)
     {
-        include_once 'views/detail.php';
+        include_once( dirname(__DIR__) . "/views/detail.php" );
+
     }
 
     public function showUpdateForm($id = null)
     {
-
-        include_once 'views/update.php';
+        include_once( dirname(__DIR__) . "/views/update.php" );
     }
 
     public function deleteImage($path)
@@ -64,7 +67,8 @@ class Controller extends DbInteractions
         }
 
         // after update, show all products 
-        include_once 'views/viewall.php';
+        include_once( dirname(__DIR__) . "/views/viewall.php" );
+
     }
 
     public function deleteOneRecord($id)
@@ -73,7 +77,8 @@ class Controller extends DbInteractions
         $this->deleteImage($this->getOneRecord($id)['image']);
         $this->deleteRecord($id);
         // after delete, show all products 
-        header("location: /HornyMVC/admin/list.html");
+        $helper = new Helper();
+        header("location: " . $helper->getURL() .  "HornyMVC/admin/list.html");
        // include_once 'views/viewall.php';
     }
 
@@ -94,7 +99,10 @@ class Controller extends DbInteractions
           
             // after created , show all
 
-            header("location: /HornyMVC/admin/list.html");
+            $helper = new Helper();
+
+           
+            header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
 
            
         }

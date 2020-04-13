@@ -3,7 +3,9 @@
 
 <?php
 
-    include_once 'db.php';
+    
+    include_once( __DIR__ . "/db.php" );
+
 
     class DbInteractions extends Db
     {
