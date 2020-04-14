@@ -1,34 +1,13 @@
 <?php
-include_once 'controllers/controller.php';
+include_once(__DIR__ . '/controllers/controller.php');
+include_once(__DIR__ . '/helper.php');
+
 class Router
 
 {
     public $controller = '';
     public $op = '';
-
-
-    function getURL()
-    {
-        // http://localhost/training/huy/HornyMVC/php.php 
-
-        $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
-            $_SERVER['SERVER_NAME'] . "/";
-        // $url = http://localhost/
-        $arr = explode("/", $_SERVER['REQUEST_URI']);
-        // $_SERVER['REQUEST_URI'] = /training/huy/HornyMVC/php.php 
-        // $arr = ("","training", "huy", "HornyMVC", "php.php")
-
-        $arr = array_slice($arr, 0, array_search("HornyMVC", $arr));
-        // $arr = ("","training", "huy") 
-        foreach ($arr as $r) {
-            if (!empty($r)) {
-                $url =  $url . $r . "/";
-            }
-        }
-
-        return $url; // http://localhost/training/huy/
-    }
-
+    public $helper ='';
 
     public function parseURL()
     {
@@ -49,7 +28,7 @@ class Router
 
         $this->controller = new Controller();
         $url = $this->parseURL();
-
+        $this->helper = new Helper();
 
 
 
@@ -64,16 +43,15 @@ class Router
 
                             $this->op = 'delete';
                             $this->controller->handleRequests($this->op, $url['3']);
-                            break;
                         } else {
-                           
+
                             // Show all
                             // admin/list.html
 
                             $this->op = 'showAll';
                             $this->controller->handleRequests($this->op);
-                            break;
                         }
+                        break;
 
                     case 'detail': // admin/detail/1  $url[2] =  1  / id of product to show detail
                         if (!empty($url[2])) {
@@ -118,6 +96,8 @@ class Router
                                     $this->op = 'updateChange';
                                     $this->controller->handleRequests($this->op, $url[3], $_POST['name'], $_POST['price'], $_FILES, $_POST['oldImage']);
                                     break;
+                                default:
+                                    break;
                             }
                         } else {
                             // if page not found - > show all 
@@ -127,16 +107,16 @@ class Router
 
                         break;
                     default:
-                        header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
+                        header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
                         break;
                 }
             } else {
                 // if page not found - > show all 
-                header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
+                header("location: " . $this->helper->getURL(). "HornyMVC/admin/list.html");
             }
         } else {
             // if page not found - > show all 
-            header("location: " . $this->getURL() . "HornyMVC/admin/list.html");
+            header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
         }
     }
 }

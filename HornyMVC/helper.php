@@ -7,8 +7,12 @@ class Helper
     {
         // http://localhost/training/huy/HornyMVC/php.php 
 
+        // $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
+        //     $_SERVER['SERVER_NAME'] . "/";
+
         $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
-            $_SERVER['SERVER_NAME'] . "/";
+            $_SERVER['HTTP_HOST'] . "/";
+
         // $url = http://localhost/
         $arr = explode("/", $_SERVER['REQUEST_URI']);
         // $_SERVER['REQUEST_URI'] = /training/huy/HornyMVC/php.php 
@@ -24,5 +28,10 @@ class Helper
 
         return $url; // http://localhost/training/huy/
     }
+
+
 }
+
+// echo "<pre>";
+// print_r($_SERVER); 
 ?>

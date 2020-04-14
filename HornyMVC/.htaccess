@@ -4,7 +4,7 @@ RewriteEngine On
 # set rewritebase like bellow will grap all things after  localhost/rootfolfer/
 # eg : if we type http://localhost/HornyMVC/abcd/dfdsfsd/dsfs -> then abcd/dfdsfsd/dsfs will be taken and compare to regex expression in RewriteRule command bellow
 # if this project is located in serverroot /a/b/c/HornyMVC - > RewriteBase /a/b/c/  
-RewriteBase /training/huy/huy1/ 
+RewriteBase /
 # if abcd/dfdsfsd/dsfs  does not points to any existent folder 
 RewriteCond %{REQUEST_FILENAME} !-d
 # then check whether abcd/dfdsfsd/dsfs points to any existent file or not, if not , move down to next command
