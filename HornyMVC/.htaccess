@@ -10,5 +10,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # then check whether abcd/dfdsfsd/dsfs points to any existent file or not, if not , move down to next command
 RewriteCond %{REQUEST_FILENAME} !-f
 # here abcd/dfdsfsd/dsfs will be compared to the regex expression ^(.*)$    every thing in side () will be held in $1
-RewriteRule ^(.*)$ HornyMVC/router.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ HornyMVC/index.php?url=$1 [QSA,L]
 # this url param can be gotten by $GET in php

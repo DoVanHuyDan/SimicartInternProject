@@ -1,32 +1,30 @@
 <?php
 
-include_once( dirname(__DIR__) . "/models/dbinteractions.php" );
-include_once( dirname(__DIR__) . "/helper.php" );
+include_once(dirname(__DIR__) . "/models/dbinteractions.php");
+include_once(dirname(__DIR__) . "/helper.php");
 
 class Controller extends DbInteractions
-{   
-    
+{
+
 
     public function pageNotFound()
     {
-        include_once( dirname(__DIR__) . "/views/404-notfound-page.html" );
+        include_once(dirname(__DIR__) . "/views/404-notfound-page.html");
     }
 
     public function showAll()
     {
-        include_once( dirname(__DIR__) . "/views/viewall.php" );
-
+        include_once(dirname(__DIR__) . "/views/viewall.php");
     }
 
     public function showDetail($id)
     {
-        include_once( dirname(__DIR__) . "/views/detail.php" );
-
+        include_once(dirname(__DIR__) . "/views/detail.php");
     }
 
     public function showUpdateForm($id = null)
     {
-        include_once( dirname(__DIR__) . "/views/update.php" );
+        include_once(dirname(__DIR__) . "/views/update.php");
     }
 
     public function deleteImage($path)
@@ -38,82 +36,70 @@ class Controller extends DbInteractions
         }
     }
 
-    public function update($id, $name, $price, $oldImage)
+    public function save($id = '', $name, $price, $oldImage = '')
     {
-
+        $helper = new Helper();
+        // image links if use is creating new product / update , gotten from updateForm
         $newImage = $this->uploadFile();
-        if ( !empty($name) )  {
-            if (empty($newImage)) // if user did upload any new image when updating 
-            {
-                $this->updateOneRecord($id, $oldImage, $name, $price);
+
+        if (empty($id)) // $id empty -> creating new product, otherwise -> update
+        {
+            if (empty($name) || empty($price) || empty($newImage)) {   // if any of fields is emty - > go back to create new product page
+                header("location:" . $helper->getURL() . "HornyMVC/admin/form/createnew" );
+                exit();
             } else {
-                // delete old oldImage if user uploaded new image
-                $this->deleteImage($oldImage);
-                $this->updateOneRecord($id, $newImage, $name, $price);
+                $this->createNewRecord($newImage, $name, $price);
+                // after created , show all
+             
+                header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
+                exit();
+              
             }
-            echo '
-                <div class="alert alert-primary" role="alert">
-                Updated!
-                </div>           
-                ';
-        } else {
-            echo '
+        } else {  // update product , and no new image has been uploaded
+            if (empty($name) || empty($price)) {
+
+                header("location:" . $helper->getURL() .  "HornyMVC/admin/form/update/$id");
+                exit();
+               
+            } else {
+                if (empty($newImage)) // if use does not update any img when editing product
+                {
+                    $this->updateOneRecord($id, $oldImage, $name, $price);
+                } else {
+                    // delete old oldImage if user uploaded new image
+                    $this->deleteImage($oldImage);
+                    $this->updateOneRecord($id, $newImage, $name, $price);
+                   
+                }
+                 // after all , show list
+                 header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
+                 exit();
                 
-                <div class="alert alert-danger" role="alert">
-                 you need to fill up all fields!
-                </div>
-                
-                ';
+            }
         }
-
-        // after update, show all products 
-        include_once( dirname(__DIR__) . "/views/viewall.php" );
-
     }
+
 
     public function deleteOneRecord($id)
     {
-        
+
         $this->deleteImage($this->getOneRecord($id)['image']);
         $this->deleteRecord($id);
         // after delete, show all products 
         $helper = new Helper();
         header("location: " . $helper->getURL() .  "HornyMVC/admin/list.html");
-       // include_once 'views/viewall.php';
+        exit();
+        // include_once 'views/viewall.php';
     }
 
-    public function saveNew($name, $price,$file)
-    {    // assign $image  = path to the uploaed image
-        $image = $this->uploadFile();
 
-        if (empty($name) || empty($price) || empty($image)) {
-            
-
-            header('location: createnew');
-            
-        } else {
-
-
-            $this->createNewRecord($image, $name, $price);
-
-          
-            // after created , show all
-
-            $helper = new Helper();
-
-           
-            header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
-
-           
-        }
-    }
 
 
     public function uploadFile()
     {
         // if users do not upload any file -> return null
         if (empty($_FILES['image']['size'])) {
-           
+
             return null;
         } else {
 
@@ -154,41 +140,41 @@ class Controller extends DbInteractions
 
 
 
-    public function handleRequests($op,$id='',$name='',$price='',$file='',$oldImage='')
+    public function handleRequests($data)
     {
-        switch ($op)
-        {
+        $op = $data['op'];
+        switch ($op) {
             case '404':
                 $this->pageNotFound();
-            break;
+                break;
 
             case 'showAll':
                 $this->showAll();
-            break;
+                break;
 
-            case 'showDetail' :
-                $this->showDetail($id);
-            break;
+            case 'showDetail':
+                $this->showDetail($data['id']);
+                break;
 
             case 'createnew':
                 $this->showUpdateForm();
-            break;
+                break;
 
             case 'update':
-                $this->showUpdateForm($id);
-            break;
+                $this->showUpdateForm($data['id']);
+                break;
 
             case 'save':
-                $this->saveNew($name,$price,$file);
-            break;
+                $this->save('',$data['name'],$data['price'],'');
+                break;
 
             case 'delete':
-                $this->deleteOneRecord($id);
-            break;
+                $this->deleteOneRecord($data['id']);
+                break;
 
             case 'updateChange':
-                $this->update($id, $name,$price,$oldImage);
-            break;
+                $this->save($data['id'],$data['name'],$data['price'],$data['oldImage']);
+                break;
         }
     }
 }

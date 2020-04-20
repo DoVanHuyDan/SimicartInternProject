@@ -7,7 +7,7 @@ class Router
 {
     public $controller = '';
     public $op = '';
-    public $helper ='';
+    public $helper = '';
 
     public function parseURL()
     {
@@ -41,26 +41,25 @@ class Router
                             // delete item 
                             // admin/list.html/delte/id
 
-                            $this->op = 'delete';
-                            $this->controller->handleRequests($this->op, $url['3']);
+                            $data = array("op" => "delete", "id" => $url[3]);
+                            $this->controller->handleRequests($data);
                         } else {
 
                             // Show all
                             // admin/list.html
-
-                            $this->op = 'showAll';
-                            $this->controller->handleRequests($this->op);
+                            $data = array("op" => "showAll");
+                            $this->controller->handleRequests($data);
                         }
                         break;
 
                     case 'detail': // admin/detail/1  $url[2] =  1  / id of product to show detail
                         if (!empty($url[2])) {
-                            $this->op = 'showDetail';
-                            $this->controller->handleRequests($this->op, $url[2]);
+                            $data = array("op" => "showDetail", "id" => $url[2]);
+                            $this->controller->handleRequests($data);
                         } else {
                             // admin/detail  -> do not know what item to show - > show all
-                            $this->op = 'showAll';
-                            $this->controller->handleRequests($this->op);
+                            $data = array("op" => "showAll");
+                            $this->controller->handleRequests($data);
                         }
 
                         break;
@@ -69,59 +68,57 @@ class Router
                             switch ($url[2]) {
                                 case 'createnew':
                                     // admin/form/createnew 
-                                    $this->op = 'createnew';
-                                    $this->controller->handleRequests($this->op);
+                                    $data = array("op" => "createnew");
+                                    $this->controller->handleRequests($data);
                                     break;
 
                                 case 'update':
                                     // admin/form/update/id
                                     if (!empty($url[3])) {
-                                        $this->op = 'update';           // $url[3] is id of product for update
-                                        $this->controller->handleRequests($this->op, $url[3]);
+                                        $data = array("op" => "update", "id" => $url[3]);          // $url[3] is id of product for update
+                                        $this->controller->handleRequests($data);
                                     } else {
                                         // admin/form/update do not know what item to update -> show all
-                                        $this->op = 'showAll';
-                                        $this->controller->handleRequests($this->op);
+                                        $data = array("op" => "showAll");
+                                        $this->controller->handleRequests($data);
                                     }
                                     break;
 
                                 case 'save': // save after creating anew product admin/form/save
-                                    $this->op = 'save';
-                                    // $_GET['name'] , $_GET['price'] come from Update.php when user create a new product
-
-                                    $this->controller->handleRequests($this->op, '', $_POST['name'], $_POST['price'], $_FILES);
+                                    // $_POST['name'] , $_POST['price'], $_FILES come from Update.php when user create a new product
+                                    $data = array("op"=>"save","name"=>$_POST['name'],"price"=>$_POST['price'],"file"=>$_FILES);
+                                    $this->controller->handleRequests($data);
                                     break;
 
                                 case 'updateChange': // http://localhost/HornyMVC/admin/form/saveChange/id
                                     $this->op = 'updateChange';
-                                    $this->controller->handleRequests($this->op, $url[3], $_POST['name'], $_POST['price'], $_FILES, $_POST['oldImage']);
+                                    $data = array("op"=>"updateChange", "id"=>$url[3], "name"=>$_POST['name'],"price"=>$_POST['price'],"file"=>$_FILES,"oldImage"=>$_POST['oldImage']);
+                                    $this->controller->handleRequests($data);
                                     break;
                                 default:
                                     break;
                             }
                         } else {
                             // if page not found - > show all 
-                            $this->op = 'showAll';
-                            $this->controller->handleRequests($this->op);
+                            $data = array("op" => "showAll");
+                            $this->controller->handleRequests($data);
                         }
 
                         break;
                     default:
                         header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+                        exit();
                         break;
                 }
             } else {
                 // if page not found - > show all 
-                header("location: " . $this->helper->getURL(). "HornyMVC/admin/list.html");
+                header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+                exit();
             }
         } else {
             // if page not found - > show all 
             header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+            exit();
         }
     }
 }
-
-
-
-$router = new Router();
-$router->routing();
