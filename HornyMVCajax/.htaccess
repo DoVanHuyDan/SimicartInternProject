@@ -2,13 +2,13 @@
 # turn on the RewriteEngine
 RewriteEngine On     
 # set rewritebase like bellow will grap all things after  localhost/rootfolfer/
-# eg : if we type http://localhost/HornyMVC/abcd/dfdsfsd/dsfs -> then abcd/dfdsfsd/dsfs will be taken and compare to regex expression in RewriteRule command bellow
-# if this project is located in serverroot /a/b/c/HornyMVC - > RewriteBase /a/b/c/  
+# eg : if we type http://localhost/HornyMVCajax/abcd/dfdsfsd/dsfs -> then abcd/dfdsfsd/dsfs will be taken and compare to regex expression in RewriteRule command bellow
+# if this project is located in serverroot /a/b/c/HornyMVCajax - > RewriteBase /a/b/c/  
 RewriteBase /
 # if abcd/dfdsfsd/dsfs  does not points to any existent folder 
 RewriteCond %{REQUEST_FILENAME} !-d
 # then check whether abcd/dfdsfsd/dsfs points to any existent file or not, if not , move down to next command
 RewriteCond %{REQUEST_FILENAME} !-f
 # here abcd/dfdsfsd/dsfs will be compared to the regex expression ^(.*)$    every thing in side () will be held in $1
-RewriteRule ^(.*)$ HornyMVC/index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ HornyMVCajax/index.php?url=$1 [QSA,L]
 # this url param can be gotten by $GET in php

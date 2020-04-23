@@ -12,11 +12,11 @@ class Router
     public function parseURL()
     {
         // get url from link / see .htaccess for more details about where url comes from
-        $url = isset($_GET['url']) ? $_GET['url'] : null; // localhost/HornyMVC/admin/erfds/sd/ds  -> $url = admin/erfds/sd/ds
+        $url = isset($_GET['url']) ? $_GET['url'] : null; // localhost/HornyMVCajax/admin/erfds/sd/ds  -> $url = admin/erfds/sd/ds
 
         $url = explode('/', trim($url));
 
-        $url = array_slice($url, array_search("HornyMVC", $url) ? array_search("HornyMVC", $url) + 1 : 0);
+        $url = array_slice($url, array_search("HornyMVCajax", $url) ? array_search("HornyMVCajax", $url) + 1 : 0);
 
         return $url;
     }
@@ -90,7 +90,7 @@ class Router
                                     $this->controller->handleRequests($data);
                                     break;
 
-                                case 'updateChange': // http://localhost/HornyMVC/admin/form/saveChange/id
+                                case 'updateChange': // http://localhost/HornyMVCajax/admin/form/saveChange/id
                                     $this->op = 'updateChange';
                                     $data = array("op" => "updateChange", "id" => $url[3], "name" => $_POST['name'], "price" => $_POST['price'], "file" => $_FILES, "oldImage" => $_POST['oldImage']);
                                     $this->controller->handleRequests($data);
@@ -107,7 +107,7 @@ class Router
                         break;
                     default:
                         if (!headers_sent()) {
-                            header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+                            header("location: " . $this->helper->getURL() . "HornyMVCajax/admin/list.html");
                             exit();
                         }
                         break;
@@ -115,14 +115,14 @@ class Router
             } else {
                 // if page not found - > show all 
                 if (!headers_sent()) {
-                    header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+                    header("location: " . $this->helper->getURL() . "HornyMVCajax/admin/list.html");
                     exit();
                 }
             }
         } else {
             // if page not found - > show all 
             if (!headers_sent()) {
-                header("location: " . $this->helper->getURL() . "HornyMVC/admin/list.html");
+                header("location: " . $this->helper->getURL() . "HornyMVCajax/admin/list.html");
                 exit();
             }
         }

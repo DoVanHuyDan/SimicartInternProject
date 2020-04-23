@@ -27,26 +27,19 @@ class Controller extends DbInteractions
         include_once(dirname(__DIR__) . "/views/update.php");
     }
 
-    public function deleteImage($path)
-    {
-        if (unlink(dirname(__DIR__) . '/' . $path)) { // full url to image
-            // delete successfully
-        } else {
-            echo "you have an error deleting image of your product";
-        }
-    }
+    
 
     public function save($id = '', $name, $price, $oldImage = '')
     {
         $helper = new Helper();
         // image links if use is creating new product / update , gotten from updateForm
-        $newImage = $this->uploadFile();
+        $newImage = $helper->uploadFile();
 
         if (empty($id)) // $id empty -> creating new product, otherwise -> update
         {
             if (empty($name) || empty($price) || empty($newImage)) {   // if any of fields is emty - > go back to create new product page
                 if (!headers_sent()) {
-                    header("location:" . $helper->getURL() . "HornyMVC/admin/form/createnew");
+                    header("location:" . $helper->getURL() . "HornyMVCajax/admin/form/createnew");
                     exit();
                 }
             } else {
@@ -54,7 +47,7 @@ class Controller extends DbInteractions
                 // after created , show all
 
                 if (!headers_sent()) {
-                    header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
+                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/list.html");
                     exit();
                 }
             }
@@ -62,7 +55,7 @@ class Controller extends DbInteractions
             if (empty($name) || empty($price)) {
                 if (!headers_sent()) {
 
-                    header("location:" . $helper->getURL() .  "HornyMVC/admin/form/update/$id");
+                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/form/update/$id");
                     exit();
                 }
             } else {
@@ -71,12 +64,12 @@ class Controller extends DbInteractions
                     $this->updateOneRecord($id, $oldImage, $name, $price);
                 } else {
                     // delete old oldImage if user uploaded new image
-                    $this->deleteImage($oldImage);
+                    $helper->deleteImage($oldImage);
                     $this->updateOneRecord($id, $newImage, $name, $price);
                 }
                 // after all , show list
                 if (!headers_sent()) {
-                    header("location:" . $helper->getURL() .  "HornyMVC/admin/list.html");
+                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/list.html");
                     exit();
                 }
             }
@@ -86,62 +79,16 @@ class Controller extends DbInteractions
 
     public function deleteOneRecord($id)
     {
-
-        $this->deleteImage($this->getOneRecord($id)['image']);
+        $helper = new Helper();
+        $helper->deleteImage($this->getOneRecord($id)['image']);
         $this->deleteRecord($id);
         // after delete, show all products 
-        $helper = new Helper();
+       
         if (!headers_sent()) {
-            header("location: " . $helper->getURL() .  "HornyMVC/admin/list.html");
+            header("location: " . $helper->getURL() .  "HornyMVCajax/admin/list.html");
             exit();
         }
         // include_once 'views/viewall.php';
-    }
-
-
-
-
-    public function uploadFile()
-    {
-        // if users do not upload any file -> return null
-        if (empty($_FILES['image']['size'])) {
-
-            return null;
-        } else {
-
-            $fileName = $_FILES['image']['name'];
-            $fileTmpName = $_FILES['image']['tmp_name'];
-            $fileSize = $_FILES['image']['size'];
-            $fileError = $_FILES['image']['error'];
-
-
-
-            $fileEXT = explode('.', $fileName);
-            $actuallfileEXT = strtolower(end($fileEXT));
-
-            $allowed = array('png', 'jpg', 'jpeg', 'pdf');
-            if (in_array($actuallfileEXT, $allowed)) {
-                if ($fileError === 0) {
-
-                    if ($fileSize < 10000000) {
-                        // uniqid method to creat unique number , then we will never have same file names
-                        $fileNameNew = uniqid('', true) . '.' . $actuallfileEXT;
-                        $destinationFolder = 'upload/' . $fileNameNew;
-
-                        // uploadfile 
-                        move_uploaded_file($fileTmpName, dirname(__DIR__) . '/' .  $destinationFolder);
-                        ///     header("location : php.php");
-                        return $destinationFolder;
-                    } else {
-                        echo 'your file is too big';
-                    }
-                } else {
-                    echo 'there is an error uploading your file!';
-                }
-            } else {
-                echo 'your file is not allowed to upload!';
-            }
-        }
     }
 
 
