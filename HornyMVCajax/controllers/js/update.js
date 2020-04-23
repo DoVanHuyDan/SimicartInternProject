@@ -5,7 +5,7 @@ $(document).ready(function () {
     $(".btn-edit").click(function (e) {
         e.preventDefault();
         var id = $(this).attr('id');
-        $.post("../controllers/controller.php",
+        $.post("../controllers/controllerAJAX.php",
             { op: 'edit', id: id },
             function (data, textStatus, jqXHR) {
                 $("#body").html(data);
@@ -16,7 +16,7 @@ $(document).ready(function () {
     // CREATE  NEW 
     $("#create-new").click(function () {
 
-        $.post("../controllers/controller.php", {
+        $.post("../controllers/controllerAJAX.php", {
             op: 'createnew'
         }, function (data, status) {
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
     // BACK TO LIST 
     $(".back-to-list").click(function () {
 
-        $.post("../controllers/controller.php", {
+        $.post("../controllers/controllerAJAX.php", {
             op: 'back-to-list'
         }, function (data, status) {
             location.reload();
@@ -53,7 +53,7 @@ $(document).ready(function () {
         formData1.append('op', 'save');
         $("").addClass('.error');
         $.ajax({
-            url: "../controllers/controller.php",
+            url: "../controllers/controllerAJAX.php",
             type: "POST",
             data: formData1,
             enctype: 'multipart/form-data',
