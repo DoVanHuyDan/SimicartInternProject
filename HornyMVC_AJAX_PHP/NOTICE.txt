@@ -1,2 +1,0 @@
-# incude ajax cdn / ajax lib before using ajax
-# select dynamic loaded html in ajax : https://stackoverflow.com/questions/4450825/how-to-select-an-element-loaded-through-the-jquery-load-function

@@ -10,17 +10,6 @@
     class DbInteractions extends Db
     {
 
-        // get n records
-        public function getNRecord($n)
-        {
-            $conn = $this->connectionMSQLI();
-            $sql = "SELECT * FROM products LIMIT $n;";
-            $result = $conn->query($sql);
-            if( $result->num_rows > 0 ) return $result->fetch_all(MYSQLI_ASSOC);
-            return null;
-
-        }
-
         // get all data from database
         public function getAllRecords()
         {

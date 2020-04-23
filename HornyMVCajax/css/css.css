@@ -10,3 +10,8 @@ img
     max-height: 500px;
 }
 
+.error
+{
+    box-shadow: 2px 3px red;
+}
+

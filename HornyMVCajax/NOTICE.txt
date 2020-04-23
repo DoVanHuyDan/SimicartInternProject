@@ -1,0 +1,31 @@
+http://www.w3programmers.com/crud-with-php-oop-and-mvc-design-pattern/
+
+# move_uploaded_file permission denied : https://www.youtube.com/watch?v=ZjhLwbqpehY
+# PHP URL REWRITE UBUNTU : https://www.digitalocean.com/community/tutorials/how-to-rewrite-urls-with-mod_rewrite-for-apache-on-ubuntu-18-04#step-2-%E2%80%94-setting-up-htaccess
+# Absolute vs Relative Path + critical mistakes + solution 
+https://code-boxx.com/php-absolute-relative-path/
+
+
+
+
+
+#NOTICE: 
+- use absolute path for include / include_once ( physical path , using magic constants like __DIR_ , __FILE__ , dirname() )
+- use absolute path too but by the form : http:// ..... , if we use physical path like dealing with include / include_once -> doesn't work
+- when rendering views - > always use "Alternative syntax for control structures ¶" in php
+https://www.php.net/manual/en/control-structures.alternative-syntax.php - write PHP in HTML not vice versa
+-     <link rel="stylesheet" href= <?php echo $helper->getURL() . '/HornyMVC/css/css.css';?> >
+        use absolute path ("http://.... for all HTML elements, like src of img tag , href of a tag,.. ")
+- use physical absolute path for all PHP elements like include / include_once  / require / require_once
+
+
+
+#.htaccess file 
+at line 6 : 
+
+
+# khi viet ajaxj 
+- quan trong la hieu dc cach viet , k quan trong vc co load lai page hay k 
+- dung full url khi import js , css ,...
+- k nen dung ajax de load HTML len , thg ng ta dung de load params
+

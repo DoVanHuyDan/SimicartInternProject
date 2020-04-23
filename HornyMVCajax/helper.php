@@ -32,6 +32,5 @@ class Helper
 
 }
 
-// echo "<pre>";
-// print_r($_SERVER); 
+
 ?>
