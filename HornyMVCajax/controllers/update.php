@@ -12,11 +12,12 @@ class Update extends DbInteractions
 
 
 
-    public function save($id = '', $name, $price, $oldImage = '')
+    public function save($id = '', $name, $price, $oldImage = '', $file='')
     {
         $helper = new Helper();
         // image links if use is creating new product / update , gotten from updateForm
         $newImage = $helper->uploadFile();
+      
 
         if (empty($id)) // $id empty -> creating new product, otherwise -> update
         {

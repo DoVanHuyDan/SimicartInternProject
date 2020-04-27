@@ -17,9 +17,16 @@ $helper = new Helper();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-     <!--link to update.js-->
-     <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/controllers/js/update.js"></script>
+    <!--link to update.js-->
+    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/js/update.js"></script>
 
+    <script>
+        $(document).ready(function() {
+
+            var up = new Update();
+            up.updateChange(".btn-submit");
+        });
+    </script>
 </head>
 
 <body>
@@ -105,7 +112,7 @@ $helper = new Helper();
                 <td></td>
                 <td>
                     <?php if ($action == 'updateChange') : ?>
-                        <button  class='btn btn-primary btn-submit'>Update Change</button>
+                        <button class='btn btn-primary btn-submit'>Update Change</button>
                     <?php elseif ($action == 'saveNew') : ?>
                         <button class='btn btn-primary btn-submit'>Create New Product</button>
                     <?php endif; ?>
@@ -118,9 +125,9 @@ $helper = new Helper();
         </table>
         <!-- </form> -->
     </div>
-<script id="script" >
-    // load script here to handle form if is is valid
-</script>
+    <script id="script">
+        // load script here to handle form if is is valid
+    </script>
 </body>
 
 </html>

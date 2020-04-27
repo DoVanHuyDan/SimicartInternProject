@@ -18,11 +18,24 @@ $helper = new Helper();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!--link to delete.js-->
-    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/controllers/js/delete.js"></script>
+    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/js/delete.js"></script>
     <!--link to update.js-->
-    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/controllers/js/update.js"></script>
+    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/js/update.js"></script>
     <!--link to detial.js-->
-    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/controllers/js/detail.js"></script>
+    <script src="<?php echo $helper->getURL(); ?>HornyMVCajax/js/detail.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var del = new Delete();
+            del.deleteProduct(".btn-delete");
+            var up = new Update();
+            up.edit(".btn-edit");
+            up.createNew("#create-new");
+            var detail = new Detail(".btn-detail");
+            detail.showDetail();
+
+        });
+    </script>
 
 </head>
 

@@ -35,12 +35,6 @@ class Controller extends DbInteractions
                 $update = new Update();
                 $update->showUpdateForm($data['id']);
                 break;
-
-            case 'save':
-                $update = new Update();
-                $update->save('', $data['name'], $data['price'], '');
-                break;
-
             case 'delete':
                 $delete = new Delete();
                 $delete->deleteOneRecord($data['id']);
@@ -48,11 +42,23 @@ class Controller extends DbInteractions
 
             case 'updateChange':
                 $update = new Update();
-                $update->save($data['id'], $data['name'], $data['price'], $data['oldImage']);
+               
+                $update->save($data['id'], $data['name'], $data['price'], isset( $data['oldImage']) ?  $data['oldImage'] : '' , $_FILES);
                 break;
         }
     }
 }
+
+
+// controller.php is called by post only when using ajax 
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $controller = new Controller();
+    $data = json_decode($_POST['data'],true);  
+    $controller->handleRequests($data);
+}
+
+
 
 
 
