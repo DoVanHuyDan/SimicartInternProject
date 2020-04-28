@@ -58,8 +58,8 @@ $helper = new Helper();
             <tr>
                 <td></td>
                 <td>
-                    <!-- <a href='index.php' class='btn btn-danger'>Back products page</a> -->
-                    <a href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/list.html'; ?> class='btn btn-danger back-to-list'>Back products page</a>
+                    
+                    <a href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showAll'; ?> class='btn btn-danger back-to-list'>Back products page</a>
 
                 </td>
             </tr>

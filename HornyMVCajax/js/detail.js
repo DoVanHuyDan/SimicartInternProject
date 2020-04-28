@@ -1,11 +1,8 @@
-
-    class Detail {
+class Detail {
         constructor(btnID) {
             this.btnID = btnID; // ".btn-detail"
         }
-
         showDetail() {
-
             $(this.btnID).click(function (e) {
                 e.preventDefault();
                 var id = $(this).attr('id');
@@ -16,7 +13,6 @@
                     { data:JSON.stringify(data)},
                     function (loadedData, textStatus, jqXHR) {
                         $("#body").html(loadedData);
-                        
                     }
                 );
             });

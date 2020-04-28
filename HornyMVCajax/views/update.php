@@ -45,8 +45,8 @@ $helper = new Helper();
     if (empty($id)) // if $id == null means that op = create new record ,not update any curent one 
     {                   // just pass $id from controller when updating
         $action = 'saveNew';
-        $actionOfForm = $helper->getURL() . 'HornyMVCajax/admin/form/save';
-        // http://localhost/HornyMVCajax/admin/form/save
+        $actionOfForm = $helper->getURL() . 'HornyMVCajax/admin/form/updateChange';
+        // http://localhost/HornyMVCajax/admin/form/updateChange
     } else {
         $action = 'updateChange';
         // this file is included by controller, so we can get directly $if from there
@@ -72,6 +72,7 @@ $helper = new Helper();
         </div>
 
         <!--action inform should e absolute path , like bellow  -->
+        <!--FOR USING PURE PHP-->
         <!-- <form action="<?php echo  $actionOfForm; ?>" method="POST" enctype="multipart/form-data"> -->
         <table class='table table-hover table-responsive '>
             <?php if ($action == 'updateChange') : ?>
@@ -112,17 +113,24 @@ $helper = new Helper();
                 <td></td>
                 <td>
                     <?php if ($action == 'updateChange') : ?>
-                        <button class='btn btn-primary btn-submit'>Update Change</button>
+                        <!-- FOR USING PURE PHP -->
+                        <input style="display: none;" type='submit' value='Save Changes' class='btn btn-primary' />
+                        <!--FOR USING AJAX-->
+                        <button  class='btn btn-primary btn-submit'>Update Change</button>
                     <?php elseif ($action == 'saveNew') : ?>
-                        <button class='btn btn-primary btn-submit'>Create New Product</button>
+                        <!-- FOR USING PURE PHP -->
+                        <input style="display: none;" type='submit' value='Create New Product' class='btn btn-primary' />
+                        <!--FOR USING AJAX-->
+                        <button  class='btn btn-primary btn-submit'>Create New Product</button>
                     <?php endif; ?>
                     <!--click save change / create new product will sent data with POST , then handle request will be call-->
-                    <!--using this button for ajax-->
-                    <a href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/list.html'; ?> class='btn btn-danger'>Back products page</a>
+
+                    <a href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showAll'; ?> class='btn btn-danger'>Back products page</a>
 
                 </td>
             </tr>
         </table>
+        <!--FOR USING PURE PHP-->
         <!-- </form> -->
     </div>
     <script id="script">

@@ -31,7 +31,7 @@ class Update extends DbInteractions
                 // after created , show all
 
                 if (!headers_sent()) {
-                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/list.html");
+                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/showAll");
                     exit();
                 }
             }
@@ -53,7 +53,7 @@ class Update extends DbInteractions
                 }
                 // after all , show list
                 if (!headers_sent()) {
-                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/list.html");
+                    header("location:" . $helper->getURL() .  "HornyMVCajax/admin/showAll");
                     exit();
                 }
             }

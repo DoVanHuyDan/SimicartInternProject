@@ -1,8 +1,7 @@
-# http://localhost/HornyMVCajax   -> show list
-# http://localhost/HornyMVCajax/admin -> show list 
-# http://localhost/HornyMVCajax/admin/list.html -> show list 
-# http://localhost/HornyMVCajax/admin/detail/id -> show detail of item having id = id 
-# http://localhost/HornyMVCajax/admin/delete/id - > delte item having id = id 
-# http://localhost/HornyMVCajax/admin/form/createnew -> createnew
-# http://localhost/HornyMVCajax/admin/form/update/id -> update item having id = id 
-# others -> list.html
+
+        // http://localhost/HornyMVCajax/admin/showAll
+        // http://localhost/HornyMVCajax/admin/showDetail/id
+        // http://localhost/HornyMVCajax/admin/delete/id
+        // http://localhost/HornyMVCajax/admin/form/update/id
+        // http://localhost/HornyMVCajax/admin/form/updateChange/id
+        // http://localhost/HornyMVCajax/admin/form/createnew

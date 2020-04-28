@@ -42,15 +42,16 @@ class Controller extends DbInteractions
 
             case 'updateChange':
                 $update = new Update();
-               
+               // $FILE got from form , this controller file runs in router.php
                 $update->save($data['id'], $data['name'], $data['price'], isset( $data['oldImage']) ?  $data['oldImage'] : '' , $_FILES);
                 break;
         }
     }
 }
 
-
+// FOR USING AJAX
 // controller.php is called by post only when using ajax 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $controller = new Controller();

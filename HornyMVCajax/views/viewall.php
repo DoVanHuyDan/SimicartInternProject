@@ -79,11 +79,22 @@ $helper = new Helper();
                             <td><?php echo $name; ?></td>
                             <td><?php echo $price ?></td>
                             <td>
-                                <!-- // read one record -->
+
+                                <!--FOR USING PURE PHP-->
+                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showDetail/' . $id; ?> class='btn btn-info m-r-1em'>Detail</a>
+                                <!--FOR USING PURE PHP-->
+                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/form/update/' . $id; ?> class='btn btn-primary m-r-1em'>Edit</a>
+                                <!--FOR USING PURE PHP-->
+                                <a style="display: none;" href='#' onclick=<?php echo "delete_user(" .  $id . ",'" . $helper->getURL() . "')"; ?> class='btn btn-danger'>Delete</a>
+
+
+
+
+                                <!--FOR USING AJAX-->
                                 <button id=<?php echo $id; ?> class='btn btn-info m-r-1em btn-detail'>Detail</button>
-                                <!-- Edit product -->
+                                <!--FOR USING AJAX-->
                                 <button id=<?php echo $id; ?> class='btn btn-primary m-r-1em btn-edit'>Edit</button>
-                                <!--using ajax to delete-->
+                                <!--FOR USING AJAX-->
                                 <button id=<?php echo $id; ?> class='btn btn-danger btn-delete'>Delete</button>
                             </td>
 
@@ -103,14 +114,30 @@ $helper = new Helper();
         <?php endif ?>
 
         <!-- // create a new product -->
-        <button class='btn btn-primary m-b-1em' id="create-new">Create New</button>
+
+        <!--FOR USING AJAX-->
+        <button  class='btn btn-primary m-b-1em' id="create-new">Create New</button>
+        <!--FOR USING PURE PHP-->
+        <a style="display: none;" href=<?php echo $helper->getURL()  . 'HornyMVCajax/admin/form/createnew'; ?> class='btn btn-primary m-b-1em'>Create New </a>
 
 
 
 
 
     </div>
+ <!--FOR USING PURE PHP-->
+    <script type='text/javascript'>
+        // confirm record deletion
+        function delete_user(id, url) {
 
+            var answer = confirm('Are you sure?');
+            if (answer) {
+                // if user clicked ok, 
+
+                window.location = url + 'HornyMVCajax/admin/delete/' + id;
+            }
+        }
+    </script>
 
 </body>
 

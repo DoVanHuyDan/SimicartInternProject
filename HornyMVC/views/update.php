@@ -100,7 +100,7 @@ $helper = new Helper();
                             <input type='submit' value='Create New Product' class='btn btn-primary' />
                         <?php endif; ?>
                         <!--click save change / create new product will sent data with POST , then handle request will be call-->
-                        <a href=<?php echo $helper->getURL() . 'HornyMVC/admin/list.html'; ?> class='btn btn-danger'>Back products page</a>
+                        <a href=<?php echo $helper->getURL() . 'HornyMVC/admin/showAll'; ?> class='btn btn-danger'>Back products page</a>
                     </td>
                 </tr>
             </table>
