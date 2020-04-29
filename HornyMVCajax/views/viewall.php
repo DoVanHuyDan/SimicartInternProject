@@ -1,6 +1,9 @@
 <?php
-include_once(dirname(__DIR__) . "/helper.php");
+require_once(dirname(__DIR__) . "/helper.php");
+require_once(dirname(__DIR__) . "/Blocks/block.php");
+$block = new Block();
 $helper = new Helper();
+$allrecord = $block->getAllRecords();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,24 +43,11 @@ $helper = new Helper();
 </head>
 
 <body>
-
-
-
     <div class="container">
 
         <div class="page_header">
             <h1> All Products</h1>
         </div>
-
-
-
-
-        <?php
-        include_once(dirname(__DIR__) . "/models/dbinteractions.php");
-        $dbinteraction = new DbInteractions();
-        $allrecord = $dbinteraction->getAllRecords();
-        ?>
-
         <!-- // if we have > 0 reocords -->
         <?php if (isset($allrecord)) : ?>
 
@@ -81,27 +71,25 @@ $helper = new Helper();
                             <td>
 
                                 <!--FOR USING PURE PHP-->
-                                <a  href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showDetail/' . $id; ?> class='btn btn-info m-r-1em'>Detail</a>
+                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showDetail/' . $id; ?> class='btn btn-info m-r-1em'>Detail</a>
                                 <!--FOR USING PURE PHP-->
-                                <a  href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/form/update/' . $id; ?> class='btn btn-primary m-r-1em'>Edit</a>
+                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/form/update/' . $id; ?> class='btn btn-primary m-r-1em'>Edit</a>
                                 <!--FOR USING PURE PHP-->
-                                <a  href='#' onclick=<?php echo "delete_user(" .  $id . ",'" . $helper->getURL() . "')"; ?> class='btn btn-danger'>Delete</a>
+                                <a style="display: none;" href='#' onclick=<?php echo "delete_user(" .  $id . ",'" . $helper->getURL() . "')"; ?> class='btn btn-danger'>Delete</a>
 
 
 
 
                                 <!--FOR USING AJAX-->
-                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-info m-r-1em btn-detail'>Detail</button>
+                                <button id=<?php echo $id; ?> class='btn btn-info m-r-1em btn-detail'>Detail</button>
                                 <!--FOR USING AJAX-->
-                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-primary m-r-1em btn-edit'>Edit</button>
+                                <button id=<?php echo $id; ?> class='btn btn-primary m-r-1em btn-edit'>Edit</button>
                                 <!--FOR USING AJAX-->
-                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-danger btn-delete'>Delete</button>
+                                <button id=<?php echo $id; ?> class='btn btn-danger btn-delete'>Delete</button>
                             </td>
 
                         </tr>
                     <?php endforeach ?>
-
-
 
                 </tbody>
 
@@ -116,16 +104,12 @@ $helper = new Helper();
         <!-- // create a new product -->
 
         <!--FOR USING AJAX-->
-        <button style="display: none;"  class='btn btn-primary m-b-1em' id="create-new">Create New</button>
+        <button  class='btn btn-primary m-b-1em' id="create-new">Create New</button>
         <!--FOR USING PURE PHP-->
-        <a  href=<?php echo $helper->getURL()  . 'HornyMVCajax/admin/form/createnew'; ?> class='btn btn-primary m-b-1em'>Create New </a>
-
-
-
-
+        <a style="display: none;" href=<?php echo $helper->getURL()  . 'HornyMVCajax/admin/form/createnew'; ?> class='btn btn-primary m-b-1em'>Create New </a>
 
     </div>
- <!--FOR USING PURE PHP-->
+    <!--FOR USING PURE PHP-->
     <script type='text/javascript'>
         // confirm record deletion
         function delete_user(id, url) {

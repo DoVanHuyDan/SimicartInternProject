@@ -1,19 +1,19 @@
 <?php
 
-include_once(dirname(__DIR__) . "/models/dbinteractions.php");
-include_once(dirname(__DIR__) . "/helper.php");
-include_once(__DIR__ . '/delete.php');
-include_once(__DIR__ . '/detail.php');
-include_once(__DIR__ . '/update.php');
-include_once(__DIR__ . '/viewall.php');
+require_once(dirname(__DIR__) . "/models/dbinteractions.php");
+require_once(dirname(__DIR__) . "/helper.php");
+require_once(__DIR__ . '/delete.php');
+require_once(__DIR__ . '/detail.php');
+require_once(__DIR__ . '/update.php');
+require_once(__DIR__ . '/viewall.php');
 
 class Controller extends DbInteractions
 {
 
-
     public function handleRequests($data)
     {
         $op = $data['op'];
+       
         switch ($op) {
             
             case 'showAll':
@@ -52,12 +52,12 @@ class Controller extends DbInteractions
 // FOR USING AJAX
 // controller.php is called by post only when using ajax 
 
-// if($_SERVER['REQUEST_METHOD'] == 'POST')
-// {
-//     $controller = new Controller();
-//     $data = json_decode($_POST['data'],true);  
-//     $controller->handleRequests($data);
-// }
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    $controller = new Controller();
+    $data = json_decode($_POST['data'],true);  
+    $controller->handleRequests($data);
+}
 
 
 

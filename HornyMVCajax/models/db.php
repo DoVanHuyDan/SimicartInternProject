@@ -32,9 +32,4 @@ class Db
 
         return $conn;
     }
-
-
 }
-
-
-?>

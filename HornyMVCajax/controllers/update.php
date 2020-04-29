@@ -1,7 +1,7 @@
 <?php
 
-include_once(dirname(__DIR__) . "/models/dbinteractions.php");
-include_once(dirname(__DIR__) . "/helper.php");
+require_once(dirname(__DIR__) . "/models/dbinteractions.php");
+require_once(dirname(__DIR__) . "/helper.php");
 
 class Update extends DbInteractions
 {

@@ -74,6 +74,7 @@ class Router
         if (isset($_POST)) {
             $data = array_merge($data, $_POST);
         }
+
         $this->controller->handleRequests($data);
     }
 }

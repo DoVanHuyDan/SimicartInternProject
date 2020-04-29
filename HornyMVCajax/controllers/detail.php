@@ -1,5 +1,5 @@
 <?php
-include_once(dirname(__DIR__) . "/models/dbinteractions.php");
+require_once(dirname(__DIR__) . "/models/dbinteractions.php");
 
 
 class Detail extends DbInteractions
