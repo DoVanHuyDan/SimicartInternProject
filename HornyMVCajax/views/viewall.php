@@ -81,21 +81,21 @@ $helper = new Helper();
                             <td>
 
                                 <!--FOR USING PURE PHP-->
-                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showDetail/' . $id; ?> class='btn btn-info m-r-1em'>Detail</a>
+                                <a  href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/showDetail/' . $id; ?> class='btn btn-info m-r-1em'>Detail</a>
                                 <!--FOR USING PURE PHP-->
-                                <a style="display: none;" href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/form/update/' . $id; ?> class='btn btn-primary m-r-1em'>Edit</a>
+                                <a  href=<?php echo $helper->getURL() . 'HornyMVCajax/admin/form/update/' . $id; ?> class='btn btn-primary m-r-1em'>Edit</a>
                                 <!--FOR USING PURE PHP-->
-                                <a style="display: none;" href='#' onclick=<?php echo "delete_user(" .  $id . ",'" . $helper->getURL() . "')"; ?> class='btn btn-danger'>Delete</a>
+                                <a  href='#' onclick=<?php echo "delete_user(" .  $id . ",'" . $helper->getURL() . "')"; ?> class='btn btn-danger'>Delete</a>
 
 
 
 
                                 <!--FOR USING AJAX-->
-                                <button id=<?php echo $id; ?> class='btn btn-info m-r-1em btn-detail'>Detail</button>
+                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-info m-r-1em btn-detail'>Detail</button>
                                 <!--FOR USING AJAX-->
-                                <button id=<?php echo $id; ?> class='btn btn-primary m-r-1em btn-edit'>Edit</button>
+                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-primary m-r-1em btn-edit'>Edit</button>
                                 <!--FOR USING AJAX-->
-                                <button id=<?php echo $id; ?> class='btn btn-danger btn-delete'>Delete</button>
+                                <button style="display: none;" id=<?php echo $id; ?> class='btn btn-danger btn-delete'>Delete</button>
                             </td>
 
                         </tr>
@@ -116,9 +116,9 @@ $helper = new Helper();
         <!-- // create a new product -->
 
         <!--FOR USING AJAX-->
-        <button  class='btn btn-primary m-b-1em' id="create-new">Create New</button>
+        <button style="display: none;"  class='btn btn-primary m-b-1em' id="create-new">Create New</button>
         <!--FOR USING PURE PHP-->
-        <a style="display: none;" href=<?php echo $helper->getURL()  . 'HornyMVCajax/admin/form/createnew'; ?> class='btn btn-primary m-b-1em'>Create New </a>
+        <a  href=<?php echo $helper->getURL()  . 'HornyMVCajax/admin/form/createnew'; ?> class='btn btn-primary m-b-1em'>Create New </a>
 
 
 

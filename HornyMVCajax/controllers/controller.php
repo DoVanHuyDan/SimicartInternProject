@@ -52,12 +52,12 @@ class Controller extends DbInteractions
 // FOR USING AJAX
 // controller.php is called by post only when using ajax 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    $controller = new Controller();
-    $data = json_decode($_POST['data'],true);  
-    $controller->handleRequests($data);
-}
+// if($_SERVER['REQUEST_METHOD'] == 'POST')
+// {
+//     $controller = new Controller();
+//     $data = json_decode($_POST['data'],true);  
+//     $controller->handleRequests($data);
+// }
 
 
 

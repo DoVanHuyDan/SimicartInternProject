@@ -73,7 +73,7 @@ $helper = new Helper();
 
         <!--action inform should e absolute path , like bellow  -->
         <!--FOR USING PURE PHP-->
-        <!-- <form action="<?php echo  $actionOfForm; ?>" method="POST" enctype="multipart/form-data"> -->
+        <form action="<?php echo  $actionOfForm; ?>" method="POST" enctype="multipart/form-data">
         <table class='table table-hover table-responsive '>
             <?php if ($action == 'updateChange') : ?>
                 <tr>
@@ -114,14 +114,14 @@ $helper = new Helper();
                 <td>
                     <?php if ($action == 'updateChange') : ?>
                         <!-- FOR USING PURE PHP -->
-                        <input style="display: none;" type='submit' value='Save Changes' class='btn btn-primary' />
+                        <input  type='submit' value='Save Changes' class='btn btn-primary' />
                         <!--FOR USING AJAX-->
-                        <button  class='btn btn-primary btn-submit'>Update Change</button>
+                        <button style="display: none;"  class='btn btn-primary btn-submit'>Update Change</button>
                     <?php elseif ($action == 'saveNew') : ?>
                         <!-- FOR USING PURE PHP -->
-                        <input style="display: none;" type='submit' value='Create New Product' class='btn btn-primary' />
+                        <input  type='submit' value='Create New Product' class='btn btn-primary' />
                         <!--FOR USING AJAX-->
-                        <button  class='btn btn-primary btn-submit'>Create New Product</button>
+                        <button style="display: none;" class='btn btn-primary btn-submit'>Create New Product</button>
                     <?php endif; ?>
                     <!--click save change / create new product will sent data with POST , then handle request will be call-->
 
@@ -131,7 +131,7 @@ $helper = new Helper();
             </tr>
         </table>
         <!--FOR USING PURE PHP-->
-        <!-- </form> -->
+        </form>
     </div>
     <script id="script">
         // load script here to handle form if is is valid
