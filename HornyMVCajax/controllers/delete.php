@@ -5,8 +5,6 @@ require_once(dirname(__DIR__) . "/helper.php");
 
 class Delete extends DbInteractions
 {
-
-
     public function deleteOneRecord($id)
     {
         $helper = new Helper();

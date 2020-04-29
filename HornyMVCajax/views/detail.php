@@ -29,8 +29,6 @@ $record = $block->getOneRecord($id);
         <div class="page-header">
             <h1> Product Details</h1>
         </div>
-
-
         <table class='table table-hover table-responsive '>
             <tr>
                 <th>Name</th>
