@@ -13,9 +13,9 @@ class Controller extends DbInteractions
     public function handleRequests($data)
     {
         $op = $data['op'];
-       
+
         switch ($op) {
-            
+
             case 'showAll':
                 $viewAll = new ViewAll();
                 $viewAll->showAll();
@@ -42,8 +42,10 @@ class Controller extends DbInteractions
 
             case 'updateChange':
                 $update = new Update();
-               // $FILE got from form , this controller file runs in router.php
-                $update->save($data['id'], $data['name'], $data['price'], isset( $data['oldImage']) ?  $data['oldImage'] : '' , $_FILES);
+                // $FILE got from form , this controller file runs in router.php
+                $update->save($data['id'], $data['name'], $data['price'], isset($data['oldImage']) ?  $data['oldImage'] : '', $_FILES);
+                break;
+            default:
                 break;
         }
     }
@@ -52,14 +54,8 @@ class Controller extends DbInteractions
 // FOR USING AJAX
 // controller.php is called by post only when using ajax 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $controller = new Controller();
-    $data = json_decode($_POST['data'],true);  
+    $data = json_decode($_POST['data'], true);
     $controller->handleRequests($data);
 }
-
-
-
-
-

@@ -1,7 +1,0 @@
-
-        // http://localhost/HornyMVCajax/admin/showAll
-        // http://localhost/HornyMVCajax/admin/showDetail/id
-        // http://localhost/HornyMVCajax/admin/delete/id
-        // http://localhost/HornyMVCajax/admin/form/update/id
-        // http://localhost/HornyMVCajax/admin/form/updateChange/id
-        // http://localhost/HornyMVCajax/admin/form/createnew

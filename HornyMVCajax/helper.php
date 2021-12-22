@@ -10,8 +10,9 @@ class Helper
         // $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
         //     $_SERVER['SERVER_NAME'] . "/";
 
-        $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' .
-            $_SERVER['HTTP_HOST'] . "/";
+        $url =  isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://' : 'http://' ;
+        $url = $url .  $_SERVER['HTTP_HOST'] . "/";
+           
 
         // $url = http://localhost/
         $arr = explode("/", $_SERVER['REQUEST_URI']);
@@ -84,6 +85,4 @@ class Helper
             }
         }
     }
-
-
 }

@@ -1,7 +1,0 @@
-# to switch to use AJAX to replace form for handling data 
-
-- in controller.php : un-comment "// FOR USING AJAX " part 
-- in views/viewall.php  remove "style : display : none; " of 4 elements right bellow  <!--FOR USING AJAX--> lines 
-and set display: none for <!--FOR USING PURE PHP--> 
-- in views/update : set display:none  / comment all lines , elements right bellow  <!--FOR USING PURE PHP--> 
-and display the ones bellow <!--FOR USING AJAX-->

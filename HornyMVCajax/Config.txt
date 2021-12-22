@@ -1,0 +1,19 @@
+1. Cấu hình .htaccess file 
+- chỉnh dòng 6 trong file .htaccess cho phù hợp với nơi lưu trữ project.
+2. Cấu hình models/db.php 
+- sửa lại thong tin về database , user , pass.
+3. Chạy file SQLScripts/sql.sql để tạo DB + table 
+4.  Project đang sử dụng ajax để xử lí dl. 
+Để  tắt ajax , chuyển qua php + form như bt . 
+
+- trong file views/viewall.php. Set display : none hoặc comment các dòng , element ngay bên dưới dòng  <!--FOR USING AJAX--> . Sau đó unComment / xóa display:none của các dòng , element ngay bên dưới dòng  <!--FOR USING PURE PHP-->
+- Làm tương tự với file view/update.php
+
+- trong file controllers/controller.php
+comment phần code (cuối file)
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $controller = new Controller();
+    $data = json_decode($_POST['data'], true);
+    $controller->handleRequests($data);
+}

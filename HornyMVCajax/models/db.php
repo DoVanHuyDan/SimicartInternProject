@@ -5,7 +5,8 @@ class Db
     private $hostName = 'localhost';
     private $userName = 'dan';
     private $passWord = '100399';
-    private $databaseName = 'horny';
+    private $databaseName = 'horny';   
+    
 
     protected function connectionPDO()
     {   
