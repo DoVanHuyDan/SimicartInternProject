@@ -75,19 +75,17 @@ $helper = new Helper();
 
 
                 <tr>
-
-
                     <td>Image</td>
                     <!--if we are creating a new product - > upload img-->
                     <?php if ($action == 'saveNew') : ?>
-                        <td><input name="image" type="file"></td>
+                        <td><input name="image" type="file" accept="image/*"></td>
                     <?php elseif( $action == 'updateChange' ) : ?>
                         <!-- // create a non-display input to save and pass the path of product's image to controller's update function -->
                         <td>
                             <img src=<?php echo $helper->getURL() . "HornyMVC/" . $record['image']; ?> alt="image here">
                             <input type="text" style="display: none" value=<?php echo $record['image']; ?> name="oldImage">
                             <span>you can choose other image here</span>
-                            <input name="image" type="file">
+                            <input name="image" type="file" accept="image/*">
                         </td>
                     <?php endif; ?>
                 </tr>
@@ -96,13 +94,13 @@ $helper = new Helper();
                 <tr>
                     <td></td>
                     <td>
-                        <? if ($action == 'updateChange') : ?>
+                        <?php if ($action == 'updateChange') : ?>
                             <input type='submit' value='Save Changes' class='btn btn-primary' />
-                        <? elseif ($action == 'saveNew') : ?>
+                        <?php elseif ($action == 'saveNew') : ?>
                             <input type='submit' value='Create New Product' class='btn btn-primary' />
-                        <? endif; ?>
+                        <?php endif; ?>
                         <!--click save change / create new product will sent data with POST , then handle request will be call-->
-                        <a href=<?php echo $helper->getURL() . 'HornyMVC/admin/list.html'; ?> class='btn btn-danger'>Back products page</a>
+                        <a href=<?php echo $helper->getURL() . 'HornyMVC/admin/showAll'; ?> class='btn btn-danger'>Back products page</a>
                     </td>
                 </tr>
             </table>
